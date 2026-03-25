@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cast Your Vote</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .header {
+            background-color: #00254c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 40%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .candidate {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #1876e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0053ab;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 15px;
+            background-color:  #002650;
+            color: white;
+        }
+        .candidate-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.candidate-box:hover {
+    background-color: #f0f7ff;
+    border-color: #1876e1;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1> Election Commission</h1>
+    <p>Secure Online Voting Portal</p>
+</div>
+
+<div class="container">
+    <h2>Cast Your Vote</h2>
+
+    <form method="POST" action="/submit_vote">
+
+       <div class="candidate">
+            <div class="candidate-box">
+                <input type="radio" name="party" value="BVP" required>
+                <img src="{{ url_for('static', filename='BVP.png') }}" class="logo">
+                <span>BVP - Bharath Vikas Party</span>
+            </div>
+            </div>
+
+        <div class="candidate">
+            <div class="candidate-box">
+                <input type="radio" name="party" value="JPP">
+                <img src="{{ url_for('static', filename='JPP.png') }}" class="logo">
+                <span>JPP - Jan Pragati Party</span>
+            </div>
+        </div>
+
+        <div class="candidate">
+            <div class="candidate-box">
+                <input type="radio" name="party" value="LSP">
+                <img src="{{ url_for('static', filename='LSP.png') }}" class="logo">
+                <span>LSP - Lok Seva Party</span>
+            </div>
+        </div>
+
+        <button type="submit">Submit Vote</button>
+    </form>
+</div><br><br><br><br><br><br><br><br>
+
+<footer>
+    © 2026 Secure E-Voting System
+</footer>
+
+</body>
+</html>

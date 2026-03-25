@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - E Voting</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+    }
+    .card {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+
+    .header {
+        background-color: #002147;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-top: 60px;
+        flex-wrap: wrap;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    footer {
+        margin-top: 80px;
+        padding: 15px;
+        background-color: #002147;
+        color: white;
+        text-align: center;
+    }
+
+    .main-container {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin-top: 100px;
+    }
+
+    .card {
+        width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #0d47a1;
+        margin-bottom: 20px;
+    }
+    label{
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    input:focus {
+        border-color: #1976d2;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: #1976d2;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .btn-primary {
+        background-color: #0d3b66;
+        border: none;
+        transition: 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #1e6091;
+        transform: scale(1.02);
+    }
+
+    button:hover {
+        background: #0d47a1;
+    }
+
+    .divider {
+        margin: 50px 0;
+        border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 900px) {
+        .main-container {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1> Election Commission</h1>
+        <p>Secure Online Voting Portal</p>
+    </div>
+
+    <div class="main-container">
+
+        <!-- USER LOGIN -->
+        <div class="card">
+            <h2>User Login</h2>
+            <form method="POST" action="/login">
+                <input type="number" name="phone" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" id="userPass" name="password" placeholder="Password" required>
+
+                <div style="text-align:left; font-size:14px;">
+                    <input type="checkbox" onclick="toggleUserPass()"> Show Password
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- ADMIN LOGIN -->
+        <div class="card">
+            <h2>Admin Login</h2>
+            <form method="POST" action="/admin">
+                <input type="email" name="email" placeholder="Admin Email" required>
+                <input type="password" id="adminPass" name="password" placeholder="Password" required>
+
+                <div style="text-align:left; font-size:14px;">
+                    <input type="checkbox" onclick="toggleAdminPass()"> Show Password
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+    function toggleUserPass() {
+        var x = document.getElementById("userPass");
+        x.type = x.type === "password" ? "text" : "password";
+    }
+
+    function toggleAdminPass() {
+        var x = document.getElementById("adminPass");
+        x.type = x.type === "password" ? "text" : "password";
+    }
+    </script>
+    <footer>
+        © 2026  Secure E-Voting System
+    </footer>
+
+</body>
+</html>

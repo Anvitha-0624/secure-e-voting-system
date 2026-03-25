@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #002147;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+        canvas {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #002147;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1> Election Commission</h1>
+        <p>Admin Dashboard - Live Vote Results</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='BVP.png') }}" class="logo">
+            <h3>BVP</h3>
+            <p>{{ votes_A }} Votes</p>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='JPP.png') }}" class="logo">
+            <h3>JPP</h3>
+            <p>{{ votes_B }} Votes</p>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='LSP.png') }}" class="logo">
+            <h3>LSP</h3>
+            <p>{{ votes_C }} Votes</p>
+        </div>
+        <canvas id="voteChart"></canvas>
+    </div>
+
+    <footer>
+        © 2026 Secure Online Voting System
+    </footer>
+
+<script>
+const ctx = document.getElementById('voteChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['BVP', 'JPP', 'LSP'],
+        datasets: [{
+    label: 'Votes',
+    data: [{{ votes_A }}, {{ votes_B }}, {{ votes_C }}],
+    backgroundColor: [
+        '#1e88e5',  //Blue
+        '#43a047',  //Green
+        '#e53935'   //Red
+    ],
+    borderRadius: 8,
+    borderWidth: 1
+}]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Live Election Results'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>
